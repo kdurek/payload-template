@@ -485,6 +485,13 @@ export interface Header {
         id?: string | null;
       }[]
     | null;
+  socialItems?:
+    | {
+        type: 'linkedin' | 'facebook' | 'instagram';
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -506,6 +513,13 @@ export interface Footer {
           url?: string | null;
           label: string;
         };
+        id?: string | null;
+      }[]
+    | null;
+  socialItems?:
+    | {
+        type: 'linkedin' | 'facebook' | 'instagram';
+        url: string;
         id?: string | null;
       }[]
     | null;
@@ -531,6 +545,13 @@ export interface HeaderSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  socialItems?:
+    | T
+    | {
+        type?: T;
+        url?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -552,6 +573,13 @@ export interface FooterSelect<T extends boolean = true> {
               url?: T;
               label?: T;
             };
+        id?: T;
+      };
+  socialItems?:
+    | T
+    | {
+        type?: T;
+        url?: T;
         id?: T;
       };
   updatedAt?: T;

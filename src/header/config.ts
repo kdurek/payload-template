@@ -19,6 +19,37 @@ export const header: GlobalConfig = {
       ],
       maxRows: 6,
     },
+    {
+      name: 'socialItems',
+      type: 'array',
+      maxRows: 6,
+      fields: [
+        {
+          name: 'type',
+          type: 'select',
+          required: true,
+          options: [
+            {
+              label: 'LinkedIn',
+              value: 'linkedin',
+            },
+            {
+              label: 'Facebook',
+              value: 'facebook',
+            },
+            {
+              label: 'Instagram',
+              value: 'instagram',
+            },
+          ],
+        },
+        {
+          name: 'url',
+          type: 'text',
+          required: true,
+        },
+      ],
+    },
   ],
   hooks: {
     afterChange: [revalidateHeader],
