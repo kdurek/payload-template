@@ -1,4 +1,4 @@
-import { CTABlock } from '@/blocks/cta/component'
+import { AboutBlock } from '@/blocks/about/component'
 import { MediaBlock } from '@/blocks/media-block/component'
 import React, { Fragment, JSX } from 'react'
 import { CMSLink } from '@/components/link'
@@ -13,12 +13,11 @@ import {
   IS_SUPERSCRIPT,
   IS_UNDERLINE,
 } from './node-format'
-import type { Page } from '@/payload-types'
 import type { BlockTypePicker } from '@/utils/type-helpers'
 
 export type NodeTypes =
   | DefaultNodeTypes
-  | SerializedBlockNode<BlockTypePicker<'cta'> | BlockTypePicker<'mediaBlock'>>
+  | SerializedBlockNode<BlockTypePicker<'about'> | BlockTypePicker<'mediaBlock'>>
 
 type Props = {
   nodes: NodeTypes[]
@@ -99,12 +98,12 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           }
 
           switch (blockType) {
-            case 'cta':
-              return <CTABlock key={index} {...block} />
+            case 'about':
+              return <AboutBlock key={index} {...block} />
             case 'mediaBlock':
               return (
                 <MediaBlock
-                  className="col-start-1 col-span-3"
+                  className="col-span-3 col-start-1"
                   imgClassName="m-0"
                   key={index}
                   {...block}

@@ -12,8 +12,9 @@ import {
 } from '@payloadcms/plugin-seo/fields'
 import { anyone } from '@/access/anyone'
 import { authenticated } from '@/access/authenticated'
-import { ctaBlock } from '@/blocks/cta/config'
 import { mediaBlock } from '@/blocks/media-block/config'
+import { aboutBlock } from '@/blocks/about/config'
+
 export const pages: CollectionConfig = {
   slug: 'pages',
   access: {
@@ -44,7 +45,7 @@ export const pages: CollectionConfig = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [ctaBlock, mediaBlock],
+              blocks: [aboutBlock, mediaBlock],
               required: true,
             },
           ],

@@ -12,7 +12,6 @@ type Props = BlockTypePicker<'mediaBlock'> & {
   captionClassName?: string
   className?: string
   enableGutter?: boolean
-  id?: string
   imgClassName?: string
   staticImage?: StaticImageData
   disableInnerContainer?: boolean

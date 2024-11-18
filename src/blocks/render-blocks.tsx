@@ -2,11 +2,11 @@ import React, { Fragment } from 'react'
 
 import type { Page } from '@/payload-types'
 
-import { CTABlock } from '@/blocks/cta/component'
+import { AboutBlock } from '@/blocks/about/component'
 import { MediaBlock } from '@/blocks/media-block/component'
 
 const blockComponents = {
-  cta: CTABlock,
+  about: AboutBlock,
   mediaBlock: MediaBlock,
 }
 
@@ -28,7 +28,7 @@ export const RenderBlocks: React.FC<{
 
             if (Block) {
               return (
-                <div className="my-16" key={index}>
+                <div key={index} className="py-6 lg:py-12">
                   {/* @ts-expect-error */}
                   <Block {...block} />
                 </div>
