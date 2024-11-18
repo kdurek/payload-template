@@ -1,5 +1,5 @@
 module.exports = {
-  extends: 'next',
+  extends: ['next', 'plugin:tailwindcss/recommended'],
   root: true,
   parserOptions: {
     project: ['./tsconfig.json'],
