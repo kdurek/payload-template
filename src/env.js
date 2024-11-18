@@ -15,12 +15,7 @@ export const env = createEnv({
     NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
   },
   client: {},
-  shared: {
-    NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
-  },
-  experimental__runtimeEnv: {
-    NODE_ENV: process.env.NODE_ENV,
-  },
+  experimental__runtimeEnv: {},
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
   emptyStringAsUndefined: true,
 })
