@@ -5,7 +5,6 @@ import { GeistSans } from 'geist/font/sans'
 import React from 'react'
 import { cn } from '@/utils/cn'
 
-import { AdminBar } from '@/components/admin-bar'
 import { env } from '@/env'
 import { Footer } from '@/footer/component'
 import { Header } from '@/header/component'
@@ -21,8 +20,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
       <body>
-        <AdminBar />
-
         <Header />
         {children}
         <Footer />

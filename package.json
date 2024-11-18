@@ -39,7 +39,6 @@
     "lucide-react": "^0.378.0",
     "next": "15.0.0",
     "payload": "3.0.0-beta.134",
-    "payload-admin-bar": "^1.0.6",
     "prism-react-renderer": "^2.3.1",
     "react": "19.0.0-rc-65a56d0e-20241020",
     "react-dom": "19.0.0-rc-65a56d0e-20241020",
