@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 import configPromise from '@payload-config'
-import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { getPayload } from 'payload'
 import { cache } from 'react'
 
 import { RenderBlocks } from '@/blocks/render-blocks'
@@ -46,7 +46,7 @@ export async function generateMetadata({ params: paramsPromise }): Promise<Metad
 }
 
 const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
-  const payload = await getPayloadHMR({ config: configPromise })
+  const payload = await getPayload({ config: configPromise })
 
   const result = await payload.find({
     collection: 'pages',
