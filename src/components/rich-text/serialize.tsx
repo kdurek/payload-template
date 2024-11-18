@@ -14,13 +14,11 @@ import {
   IS_UNDERLINE,
 } from './node-format'
 import type { Page } from '@/payload-types'
+import type { BlockTypePicker } from '@/utils/type-helpers'
 
 export type NodeTypes =
   | DefaultNodeTypes
-  | SerializedBlockNode<
-      | Extract<Page['layout'][0], { blockType: 'cta' }>
-      | Extract<Page['layout'][0], { blockType: 'mediaBlock' }>
-    >
+  | SerializedBlockNode<BlockTypePicker<'cta'> | BlockTypePicker<'mediaBlock'>>
 
 type Props = {
   nodes: NodeTypes[]

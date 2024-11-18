@@ -1,14 +1,11 @@
 import React from 'react'
 
-import type { Page } from '@/payload-types'
-
 import RichText from '@/components/rich-text'
 import { CMSLink } from '@/components/link'
-
-type Props = Extract<Page['layout'][0], { blockType: 'cta' }>
+import type { BlockTypePicker } from '@/utils/type-helpers'
 
 export const CTABlock: React.FC<
-  Props & {
+  BlockTypePicker<'cta'> & {
     id?: string
   }
 > = ({ links, richText }) => {

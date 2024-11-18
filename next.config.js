@@ -14,7 +14,7 @@ import redirects from './redirects.js'
 const nextConfig = {
   images: {
     remotePatterns: [
-      ...[process.env.BASE_URL].map((item) => {
+      ...[process.env.BASE_URL || 'http://localhost:3000'].map((item) => {
         const url = new URL(item)
 
         return {

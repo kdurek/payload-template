@@ -1,13 +1,13 @@
 import type { StaticImageData } from 'next/image'
 
+import RichText from '@/components/rich-text'
 import { cn } from '@/utils/cn'
 import React from 'react'
-import RichText from '@/components/rich-text'
 
-import type { Page } from '@/payload-types'
 import { Media } from '@/components/media'
+import type { BlockTypePicker } from '@/utils/type-helpers'
 
-type Props = Extract<Page['layout'][0], { blockType: 'mediaBlock' }> & {
+type Props = BlockTypePicker<'mediaBlock'> & {
   breakout?: boolean
   captionClassName?: string
   className?: string
