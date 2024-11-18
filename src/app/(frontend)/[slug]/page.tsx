@@ -9,6 +9,8 @@ import { RenderHero } from '@/heros/render-hero'
 import { generateMeta } from '@/utils/generate-meta'
 import { notFound } from 'next/navigation'
 
+export const dynamic = 'force-dynamic'
+
 type Args = {
   params: Promise<{
     slug?: string
