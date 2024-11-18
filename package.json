@@ -20,7 +20,6 @@
   "dependencies": {
     "@payloadcms/db-mongodb": "3.0.0-beta.134",
     "@payloadcms/next": "3.0.0-beta.134",
-    "@payloadcms/plugin-redirects": "3.0.0-beta.134",
     "@payloadcms/plugin-seo": "3.0.0-beta.134",
     "@payloadcms/richtext-lexical": "3.0.0-beta.134",
     "@payloadcms/ui": "3.0.0-beta.134",

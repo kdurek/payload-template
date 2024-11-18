@@ -1,6 +1,5 @@
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 
-import { redirectsPlugin } from '@payloadcms/plugin-redirects'
 import { seoPlugin } from '@payloadcms/plugin-seo'
 import {
   BoldFeature,
@@ -22,7 +21,6 @@ import { pages } from './collections/pages'
 import { users } from './collections/users'
 import { footer } from './footer/config'
 import { header } from './header/config'
-import { revalidateRedirects } from './hooks/revalidate-redirects'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -93,28 +91,6 @@ export default buildConfig({
   csrf: [env.BASE_URL].filter(Boolean),
   globals: [header, footer],
   plugins: [
-    redirectsPlugin({
-      collections: ['pages'],
-      overrides: {
-        // @ts-expect-error
-        fields: ({ defaultFields }) => {
-          return defaultFields.map((field) => {
-            if ('name' in field && field.name === 'from') {
-              return {
-                ...field,
-                admin: {
-                  description: 'You will need to rebuild the website when changing this field.',
-                },
-              }
-            }
-            return field
-          })
-        },
-        hooks: {
-          afterChange: [revalidateRedirects],
-        },
-      },
-    }),
     seoPlugin({
       generateTitle,
       generateURL,
