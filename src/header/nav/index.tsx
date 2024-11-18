@@ -34,22 +34,26 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
             <span className="sr-only">Menu Icon</span>
           </SheetTrigger>
           <SheetContent side="top">
-            <nav className="flex flex-col items-center justify-center gap-2">
-              {navItems.map(({ id, link }) => (
-                <NavItem key={id} onClick={() => setIsOpen(false)} {...link} />
-              ))}
-              {socialItems.map(({ type, url }) => (
-                <a
-                  key={type}
-                  href={url}
-                  aria-label={type}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-foreground/70 hover:text-foreground lg:text-foreground"
-                >
-                  {socialIcons[type]}
-                </a>
-              ))}
+            <nav className="flex flex-col gap-6">
+              <div className="flex flex-col items-center justify-center gap-2">
+                {navItems.map(({ id, link }) => (
+                  <NavItem key={id} onClick={() => setIsOpen(false)} {...link} />
+                ))}
+              </div>
+              <div className="flex items-center justify-center gap-6">
+                {socialItems.map(({ type, url }) => (
+                  <a
+                    key={type}
+                    href={url}
+                    aria-label={type}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground/70 hover:text-foreground lg:text-foreground"
+                  >
+                    {socialIcons[type]}
+                  </a>
+                ))}
+              </div>
             </nav>
           </SheetContent>
         </Sheet>
