@@ -10,7 +10,7 @@ export async function Header() {
   const header: Header = await getCachedGlobal('header', 1)()
 
   return (
-    <header className="container relative flex h-16 items-center justify-between">
+    <header className="container relative z-20 flex h-16 items-center justify-between">
       <Link href="/">
         <Logo />
       </Link>
