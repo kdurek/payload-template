@@ -52,5 +52,6 @@ export default buildConfig({
   },
   graphQL: {
     disable: true,
+    disablePlaygroundInProduction: true,
   },
 })
