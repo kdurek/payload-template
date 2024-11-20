@@ -1,9 +1,8 @@
-import { AboutBlock } from '@/blocks/about/component'
 import { MediaBlock } from '@/blocks/media-block/component'
-import React, { Fragment, JSX } from 'react'
 import { CMSLink } from '@/components/link'
+import type { MediaBlock as MediaBlockProps } from '@/payload-types'
 import { DefaultNodeTypes, SerializedBlockNode } from '@payloadcms/richtext-lexical'
-
+import React, { Fragment, JSX } from 'react'
 import {
   IS_BOLD,
   IS_CODE,
@@ -13,11 +12,8 @@ import {
   IS_SUPERSCRIPT,
   IS_UNDERLINE,
 } from './node-format'
-import type { BlockTypePicker } from '@/utils/type-helpers'
 
-export type NodeTypes =
-  | DefaultNodeTypes
-  | SerializedBlockNode<BlockTypePicker<'about'> | BlockTypePicker<'mediaBlock'>>
+export type NodeTypes = DefaultNodeTypes | SerializedBlockNode<MediaBlockProps>
 
 type Props = {
   nodes: NodeTypes[]
@@ -98,8 +94,6 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           }
 
           switch (blockType) {
-            case 'about':
-              return <AboutBlock key={index} {...block} />
             case 'mediaBlock':
               return (
                 <MediaBlock

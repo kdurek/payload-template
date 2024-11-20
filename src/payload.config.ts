@@ -1,37 +1,22 @@
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 
-import { seoPlugin } from '@payloadcms/plugin-seo'
-import {
-  BoldFeature,
-  ItalicFeature,
-  LinkFeature,
-  UnderlineFeature,
-  lexicalEditor,
-} from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
 import { env } from '@/env'
-import { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
-import { Page } from 'src/payload-types'
 import { media } from './collections/media'
 import { pages } from './collections/pages'
 import { users } from './collections/users'
 import { footer } from './footer/config'
 import { header } from './header/config'
+import { defaultLexical } from '@/fields/default-lexical'
+import { getServerSideURL } from '@/utils/get-url'
+import { plugins } from '@/plugins'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
-
-const generateTitle: GenerateTitle<Page> = ({ doc }) => {
-  return doc?.title ? `${doc.title} | CHANGE_ME` : 'CHANGE_ME'
-}
-
-const generateURL: GenerateURL<Page> = ({ doc }) => {
-  return doc?.slug ? `${env.BASE_URL}/${doc.slug}` : env.BASE_URL
-}
 
 export default buildConfig({
   admin: {
@@ -52,50 +37,14 @@ export default buildConfig({
     },
   },
   // This config helps us configure global or default features that the other editors can inherit
-  editor: lexicalEditor({
-    features: () => {
-      return [
-        UnderlineFeature(),
-        BoldFeature(),
-        ItalicFeature(),
-        LinkFeature({
-          enabledCollections: ['pages'],
-          fields: ({ defaultFields }) => {
-            const defaultFieldsWithoutUrl = defaultFields.filter((field) => {
-              if ('name' in field && field.name === 'url') return false
-              return true
-            })
-
-            return [
-              ...defaultFieldsWithoutUrl,
-              {
-                name: 'url',
-                type: 'text',
-                admin: {
-                  condition: ({ linkType }) => linkType !== 'internal',
-                },
-                label: ({ t }) => t('fields:enterURL'),
-                required: true,
-              },
-            ]
-          },
-        }),
-      ]
-    },
-  }),
+  editor: defaultLexical,
   db: mongooseAdapter({
     url: env.DATABASE_URL,
   }),
   collections: [pages, media, users],
-  cors: [env.BASE_URL].filter(Boolean),
-  csrf: [env.BASE_URL].filter(Boolean),
+  cors: [getServerSideURL()].filter(Boolean),
   globals: [header, footer],
-  plugins: [
-    seoPlugin({
-      generateTitle,
-      generateURL,
-    }),
-  ],
+  plugins: [...plugins],
   secret: env.PAYLOAD_SECRET,
   sharp,
   typescript: {

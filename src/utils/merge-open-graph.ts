@@ -1,12 +1,12 @@
-import { env } from '@/env'
 import type { Metadata } from 'next'
+import { getServerSideURL } from './get-url'
 
 const defaultOpenGraph: Metadata['openGraph'] = {
   type: 'website',
   description: 'CHANGE_ME',
   images: [
     {
-      url: `${env.BASE_URL}/website-template-OG.webp`,
+      url: `${getServerSideURL()}/website-template-OG.webp`,
     },
   ],
   siteName: 'CHANGE_ME',

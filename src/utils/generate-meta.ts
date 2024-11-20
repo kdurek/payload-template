@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 
+import type { Page } from '../payload-types'
+
 import { mergeOpenGraph } from './merge-open-graph'
-import { env } from '@/env'
-import type { Page } from '@/payload-types'
+import { getServerSideURL } from './get-url'
 
 export const generateMeta = async (args: { doc: Page }): Promise<Metadata> => {
   const { doc } = args || {}
@@ -11,9 +12,11 @@ export const generateMeta = async (args: { doc: Page }): Promise<Metadata> => {
     typeof doc?.meta?.image === 'object' &&
     doc.meta.image !== null &&
     'url' in doc.meta.image &&
-    `${env.BASE_URL}${doc.meta.image.url}`
+    `${getServerSideURL()}`
 
-  const title = doc?.meta?.title ? doc?.meta?.title : 'Payload Website Template'
+  const title = doc?.meta?.title
+    ? doc?.meta?.title + ' | Payload Website Template'
+    : 'Payload Website Template'
 
   return {
     description: doc?.meta?.description,
