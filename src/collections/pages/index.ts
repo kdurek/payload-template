@@ -15,13 +15,17 @@ import { authenticated } from '@/access/authenticated'
 import { mediaBlock } from '@/blocks/media-block/config'
 import { aboutBlock } from '@/blocks/about/config'
 
-export const pages: CollectionConfig = {
+export const pages: CollectionConfig<'pages'> = {
   slug: 'pages',
   access: {
     create: authenticated,
     delete: authenticated,
     read: anyone,
     update: authenticated,
+  },
+  defaultPopulate: {
+    title: true,
+    slug: true,
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],

@@ -39,7 +39,7 @@ export const BlockWrapper = forwardRef<HTMLDivElement, BlockWrapperProps>(functi
             },
             visible: { opacity: 1, x: 0, y: 0, filter: 'blur(0px)' },
           }}
-          viewOptions={{ margin: '0px 0px -100px 0px' }}
+          viewOptions={{ once: true, margin: '0px 0px -100px 0px' }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
           <div className={wrapperClassName} {...props}>

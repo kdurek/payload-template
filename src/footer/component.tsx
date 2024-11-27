@@ -6,6 +6,7 @@ import type { Footer } from '@/payload-types'
 
 import { CMSLink } from '@/components/link'
 import { socialIcons } from '@/components/social-icons'
+import { Logo } from '@/components/logo'
 
 export async function Footer() {
   const footer: Footer = await getCachedGlobal('footer', 1)()
@@ -18,13 +19,7 @@ export async function Footer() {
       <div className="container py-6">
         <div className="grid place-items-center gap-6 lg:grid-cols-3">
           <Link href="/" className="lg:justify-self-start">
-            <picture>
-              <img
-                alt="CHANGE_ME"
-                className="max-w-36"
-                src="https://raw.githubusercontent.com/payloadcms/payload/main/packages/payload/src/admin/assets/images/payload-logo-light.svg"
-              />
-            </picture>
+            <Logo />
           </Link>
 
           <nav className="flex items-center gap-12 lg:justify-self-center">

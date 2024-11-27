@@ -14,7 +14,7 @@ import { authenticated } from '@/access/authenticated'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
-export const media: CollectionConfig = {
+export const media: CollectionConfig<'media'> = {
   slug: 'media',
   access: {
     create: authenticated,

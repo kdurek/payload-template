@@ -12,7 +12,7 @@ export async function Header() {
   return (
     <header className="container relative z-20 flex h-16 items-center justify-between">
       <Link href="/">
-        <Logo />
+        <Logo loading="eager" priority="high" />
       </Link>
       <HeaderNav header={header} />
     </header>
