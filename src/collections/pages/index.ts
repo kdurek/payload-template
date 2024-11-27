@@ -23,10 +23,6 @@ export const pages: CollectionConfig<'pages'> = {
     read: anyone,
     update: authenticated,
   },
-  defaultPopulate: {
-    title: true,
-    slug: true,
-  },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
     useAsTitle: 'title',

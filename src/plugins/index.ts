@@ -6,7 +6,7 @@ import { Page } from '@/payload-types'
 import { getServerSideURL } from '@/utils/get-url'
 
 const generateTitle: GenerateTitle<Page> = ({ doc }) => {
-  return doc?.title ? `${doc.title} | Ampa` : 'Ampa'
+  return doc?.title ? `${doc.title} | CHANGE_ME` : 'CHANGE_ME'
 }
 
 const generateURL: GenerateURL<Page> = ({ doc }) => {
