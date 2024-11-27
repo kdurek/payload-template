@@ -14,7 +14,7 @@ export const BlockWrapper = forwardRef<HTMLDivElement, BlockWrapperProps>(functi
   { children, className, invertBackground, animateBackground, animate, animateFrom, ...props },
   ref,
 ) {
-  const wrapperClassName = cn('container relative py-12', className)
+  const wrapperClassName = cn('container relative py-12 lg:py-24', className)
   const wrapperAnimateFrom = {
     top: { x: 0, y: -100 },
     right: { x: 100, y: 0 },

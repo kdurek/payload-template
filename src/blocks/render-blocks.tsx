@@ -19,7 +19,7 @@ export const RenderBlocks: React.FC<{
 
   if (hasBlocks) {
     return (
-      <Fragment>
+      <div className="py-6 lg:py-12">
         {blocks.map((block, index) => {
           const { blockType } = block
 
@@ -28,16 +28,14 @@ export const RenderBlocks: React.FC<{
 
             if (Block) {
               return (
-                <div key={index} className="py-6 lg:py-12">
-                  {/* @ts-expect-error */}
-                  <Block {...block} />
-                </div>
+                // @ts-expect-error
+                <Block key={index} {...block} />
               )
             }
           }
           return null
         })}
-      </Fragment>
+      </div>
     )
   }
 
